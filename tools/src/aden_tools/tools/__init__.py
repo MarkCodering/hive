@@ -23,6 +23,8 @@ if TYPE_CHECKING:
 # Import register_tools from each tool module
 from .apollo_tool import register_tools as register_apollo
 from .bigquery_tool import register_tools as register_bigquery
+from .calcom_tool import register_tools as register_calcom
+from .calendar_tool import register_tools as register_calendar
 from .csv_tool import register_tools as register_csv
 from .email_tool import register_tools as register_email
 from .example_tool import register_tools as register_example
@@ -52,6 +54,7 @@ from .runtime_logs_tool import register_tools as register_runtime_logs
 from .serpapi_tool import register_tools as register_serpapi
 from .slack_tool import register_tools as register_slack
 from .telegram_tool import register_tools as register_telegram
+from .time_tool import register_tools as register_time
 from .vision_tool import register_tools as register_vision
 from .web_scrape_tool import register_tools as register_web_scrape
 from .web_search_tool import register_tools as register_web_search
@@ -76,6 +79,7 @@ def register_all_tools(
     register_example(mcp)
     register_web_scrape(mcp)
     register_pdf_read(mcp)
+    register_time(mcp)
     register_runtime_logs(mcp)
 
     # Tools that need credentials (pass credentials if provided)
@@ -90,6 +94,8 @@ def register_all_tools(
     register_news(mcp, credentials=credentials)
     register_apollo(mcp, credentials=credentials)
     register_serpapi(mcp, credentials=credentials)
+    register_calendar(mcp, credentials=credentials)
+    register_calcom(mcp, credentials=credentials)
     register_slack(mcp, credentials=credentials)
     register_telegram(mcp, credentials=credentials)
     register_vision(mcp, credentials=credentials)
@@ -114,6 +120,7 @@ def register_all_tools(
         "web_search",
         "web_scrape",
         "pdf_read",
+        "get_current_time",
         "view_file",
         "write_to_file",
         "list_dir",
@@ -144,6 +151,15 @@ def register_all_tools(
         "apollo_enrich_company",
         "apollo_search_people",
         "apollo_search_companies",
+        "calcom_list_bookings",
+        "calcom_get_booking",
+        "calcom_create_booking",
+        "calcom_cancel_booking",
+        "calcom_get_availability",
+        "calcom_update_schedule",
+        "calcom_list_schedules",
+        "calcom_list_event_types",
+        "calcom_get_event_type",
         "github_list_repos",
         "github_get_repo",
         "github_search_repos",
@@ -192,6 +208,14 @@ def register_all_tools(
         "scholar_get_author",
         "patents_search",
         "patents_get_details",
+        "calendar_list_events",
+        "calendar_get_event",
+        "calendar_create_event",
+        "calendar_update_event",
+        "calendar_delete_event",
+        "calendar_list_calendars",
+        "calendar_get_calendar",
+        "calendar_check_availability",
         "slack_send_message",
         "slack_list_channels",
         "slack_get_channel_history",
